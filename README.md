@@ -1,3 +1,5 @@
+# LRU (Last Recently Used) APCu (User Cache)
+
 ## Ensure APC User Cache is installed on environment
 http://pecl.php.net/package/APCu
 
