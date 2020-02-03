@@ -27,12 +27,19 @@ namespace WifiSpark;
 
 class LruApcuCache implements LruCacheInterface
 {
+    /** @var int */
     protected $maxItems;
 
+    /** @var string */
     protected $queueName;
 
+    /** @var array */
     protected $queue;
 
+    /**
+     * @param string $queueName Identifier for cached queue.
+     * @param int $maxItems Maximum number of items allowed in cache.
+     */
     public function __construct(string $queueName, int $maxItems = 10)
     {
         $this->maxItems = $maxItems;
@@ -44,6 +51,10 @@ class LruApcuCache implements LruCacheInterface
         $this->setupQueue();
     }
 
+    /**
+     * @param string $key Identifier for cached item in queue.
+     * @return mixed data stored in cache for key.
+     */
     public function get($key)
     {
         //if key is item in the queue
@@ -71,6 +82,11 @@ class LruApcuCache implements LruCacheInterface
         }
     }
 
+    /**
+     * @param string $key Identifier for cached item in queue.
+     * @param mixed $value data value of cached item in queue.
+     * @return void.
+     */
     public function set($key, $value): void
     {
         //if key is item in the queue
